@@ -1,0 +1,62 @@
+.card {
+  margin: auto;
+  width: 500px;
+  margin-top: 15%;
+  
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}  
+input {
+    width: 90%;
+    max-width: 40rem;
+    height: 1.5rem;
+  }
+.item {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 1rem;
+  } 
+.item label {
+  width: 5rem;
+  text-align: center;
+  font-weight: bold;
+  display: block;
+  justify-items: center;
+  margin-right: 1em;
+}
+
+input {
+    font: inherit;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    /* margin-bottom: 0.5rem; */
+  }
+  
+  input:focus {
+    outline: none;
+    border: 2px solid green;
+  } 
+  .buttonItem {
+    display: flex;
+    justify-content: center;
+
+  }
+  .Create_button {
+    background-color: rgb(250, 14, 14);
+    display: block;
+    width: 7rem;
+  }
+  @media (max-width : 480px) {
+     .card {
+       width: 100%;
+       margin-top: 50%;
+     }
+  }

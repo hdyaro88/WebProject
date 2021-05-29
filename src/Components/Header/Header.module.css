@@ -1,0 +1,24 @@
+.navbar {
+  overflow: hidden;
+  background-color: rgb(113, 0, 148);
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.buttons {
+  width: 15rem;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+.navbar_button {
+  margin: auto;
+  float: right;
+  background-color: rgb(44, 129, 5);
+  border: none;
+}
