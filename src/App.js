@@ -18,6 +18,7 @@ function App() {
   };
   const LogoutHandler = () => {
     localStorage.setItem("isLoggedIn" , "0");
+    listCtx.items = []
     setIsLoggedIn(false);
     setshowPost(false);
     setismainPageOpen(true)
