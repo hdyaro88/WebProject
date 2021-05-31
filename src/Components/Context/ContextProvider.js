@@ -1,36 +1,36 @@
-import {useState } from "react"
+import {useReducer } from "react"
 import ListContext from "./List-Context"
-const demoList = [
-    {id : 1 , name : "Rohit",
-    age : 19,
-    relation : "Brother"} ,
-    {id : 2 , name : "Rohit",
-    age : 19,
-    relation : "Brother"} ,
-    {id : 3 , name : "Rohit",
-    age : 19,
-    relation : "Brother"}
-  ];
+  const defaultState = {
+      items : []
+  }
+  const postReducer = (state , action) => {
+      if(action.type === "ADD") {
+          const existingPostId = state.items.findIndex(post => post.id === action.Post.id)
+          const existingPost = state.items[existingPostId];
+          if(existingPost) {
+             const updatedpost = [...state.items]
+             updatedpost[existingPostId] = action.Post;
+             return {items : updatedpost}
+          }
+          return {items: [...state.items , action.Post]};
+      }
+      else if(action.type === "DEL") {
+          const list = state.items.filter(post => post.id !== action.Id)
+          return {items : list}
+      }
+      return defaultState;
+  }
 
 const ContextProvider = (props) => {
-    const [List, setList] = useState(demoList);
-
+    const[postState , postActionDisptacher] = useReducer(postReducer , defaultState)
     const addPostHandler = (post) => {
-        const existingPostid = List.findIndex(item => item.id === post.id)
-        const existingPost = List[existingPostid]
-        if(existingPost) {
-            List[existingPostid] = post;
-            return;
-        }
-           setList(prevstate => {
-               return [...prevstate , post];
-           })
+        postActionDisptacher({type : "ADD" , Post : post});
     }
     const deletePostHandler = (id) => {
-        setList(List.filter(post => post.id !== id))
+        postActionDisptacher({type : "DEL" , Id : id})
     }
     const listContext = {
-        items : List,
+        items : postState.items,
         add : addPostHandler,
         delete : deletePostHandler
     }

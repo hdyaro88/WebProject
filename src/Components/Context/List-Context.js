@@ -3,8 +3,8 @@ import { createContext } from "react";
 const ListContext = createContext(
     {
         items : [],
-        add : () => {},
-        delete : () => {}
+        add : (post) => {},
+        delete : (id) => {}
     }
 )
 export default ListContext;

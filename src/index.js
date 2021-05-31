@@ -3,4 +3,5 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import ContextProvider from "./Components/Context/ContextProvider";
-ReactDOM.render(<ContextProvider><App /></ContextProvider>, document.getElementById("root"));
+import { BrowserRouter } from "react-router-dom";
+ReactDOM.render(<BrowserRouter><ContextProvider><App /></ContextProvider></BrowserRouter>, document.getElementById("root"));

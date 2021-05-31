@@ -1,0 +1,64 @@
+.card {
+    margin: auto;
+    width: auto;
+    margin-top: 15%;
+    max-width: 500px;
+    
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+  }  
+  input {
+      width: 90%;
+      max-width: 40rem;
+      height: 1.5rem;
+    }
+  .item {
+      display: block;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin: 1rem;
+    } 
+  .item label {
+    width: 7rem;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    justify-items: center;
+    margin-right: 1em;
+  }
+  
+  input {
+      font: inherit;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      /* margin-bottom: 0.5rem; */
+    }
+    
+    input:focus {
+      outline: none;
+      border: 2px solid green;
+    } 
+    .buttonItem  {
+      display: flex;
+      justify-content: center;
+    }
+    .Login_button {
+      background-color: rgb(147, 226, 43);
+      display: block;
+      width: 6rem;
+      font-style: bold;
+      font-weight: bolder;
+    }
+    @media (max-width : 480px) {
+      .card {
+        width: 95%;
+        margin-top: 25%;
+      }
+   }

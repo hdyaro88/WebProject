@@ -1,6 +1,6 @@
 .navbar {
   overflow: hidden;
-  background-color: rgb(113, 0, 148);
+  background-color: rgb(115, 0, 192);
   height: 5rem;
   position: fixed;
   top: 0;
@@ -9,7 +9,9 @@
   justify-content: space-between;
   align-content: center;
 }
-
+/* .h1 {
+  className={`${props.isLoggedIn ? styles.favbar : styles.favbar}`} }
+} */
 .buttons {
   width: 15rem;
   display: flex;
@@ -21,4 +23,19 @@
   float: right;
   background-color: rgb(44, 129, 5);
   border: none;
+  font-style: bold;
+  font-weight: bolder;
+}
+.favbar {
+  height: 100%;
+}
+.Appname {
+  text-align: center;
+  margin-left: 2vw;
+  color : white ;
+  border : 2px solid white ;
+  border-radius: 10px;
+}
+@media (max-width : 480px) {
+
 }

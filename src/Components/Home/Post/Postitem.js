@@ -1,22 +1,25 @@
 import React, { useContext, useState } from "react";
 import ListContext from "../../Context/List-Context";
+import Modal from "../../modal/Modal";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import styles from "./PostItem.module.css";
 const PostItem = (props) => {
     const listCtx = useContext(ListContext)
    const[isClicked , setisClicked] =  useState(false)
+   const[editIsClicked , seteditIsClicked] = useState(false)
    const clickHandler = () => {
         setisClicked(!isClicked)
-        // console.log(props.id)
    }
    const deleteClickHandler = () => {
        listCtx.delete(props.id)
    }
-   const editHandler = () => {
-          props.onClickEdit(props.id);
-   }
-  //  props.onClickEdit();
+   const hideMoalhandler = () => {
+    seteditIsClicked(false);
+  }
+  const showModalHandler = () => {
+    seteditIsClicked(true)
+  }
   return (
     <React.Fragment>
       <div onClick={clickHandler} className={styles.card}>
@@ -37,7 +40,8 @@ const PostItem = (props) => {
       {isClicked && (
           <div className={styles.card}>
           <Card className={styles.downbar}>
-          <Button onClick={editHandler} className={styles.downbar_button}>Edit</Button>
+          <Button onClick={showModalHandler} className={styles.downbar_button}>Edit</Button>
+          {editIsClicked && <Modal onClose={hideMoalhandler}  id = {props.id}/>}
           <Button onClick={deleteClickHandler} className={styles.downbar_button}>Delete</Button>
          </Card>
         </div>

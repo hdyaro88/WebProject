@@ -31,7 +31,6 @@ const listCtx = useContext(ListContext)
   };
   const updateageHandler = (event) => {
     const val = event.target.value;
-    console.log(+val)
     if (val.trim().lenth === 0) {
       return;
     }
@@ -50,15 +49,15 @@ const listCtx = useContext(ListContext)
         <form onSubmit={submitHandler}>
           <div className={classes.item}>
             <label>Name</label>
-            <input value={name} type="text" onChange={updatenameHandler}></input>
+            <input value={name} required type="text" onChange={updatenameHandler}></input>
           </div>
           <div className={classes.item}>
             <label>Age</label>
-            <input value={age} type="number" onChange={updateageHandler}></input>
+            <input value={age} required type="number" onChange={updateageHandler}></input>
           </div>
           <div className={classes.item}>
             <label>Relation</label>
-            <input value={relation} type="text" onChange={updaterelationHandler}></input>
+            <input value={relation} required type="text" onChange={updaterelationHandler}></input>
           </div>
           <div className={classes.buttonItem}>
             <Button className={classes.Create_button}>Create Post</Button>

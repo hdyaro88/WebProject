@@ -1,28 +1,29 @@
-import React from "react"
+import React, { useContext } from "react"
 import {  useState } from "react";
+import ListContext from "../Context/List-Context";
 import Button from "../UI/Button"
 import Card from "../UI/Card"
 import classes from "./modal.module.css"
 const Backdrop = (props) => {
     return (
         <div onClick={props.onClick} className={classes.backdrop}>
-
         </div>
     )
 } 
 const ModelView = (props) => {
+  const listCtx = useContext(ListContext)
   const [name, setname] = useState('');
   const [age, setage] = useState('');
   const [relation, setrelation] = useState('');
   const submitHandler = (event) => {
     event.preventDefault();
     const post = {
-      id: Math.random(),
+      id: props.id,
       name: name,
       age: age,
       relation: relation,
     };
-    props.onSubmit(post)
+     listCtx.add(post);
     setname("");
     setrelation("");
     setage("");
@@ -37,7 +38,6 @@ const ModelView = (props) => {
   };
   const updateageHandler = (event) => {
     const val = event.target.value;
-    console.log(+val)
     if (val.trim().lenth === 0) {
       return;
     }
@@ -79,7 +79,7 @@ const Modal = (props) => {
     return (
         <React.Fragment>
         <Backdrop onClick={props.onClose}/>
-        <ModelView onClick={props.onClose} onSubmit = {props.onSubmit}/>
+        <ModelView id = {props.id} onClick={props.onClose} />
         </React.Fragment>
         
         

@@ -25,7 +25,7 @@ input {
     margin: 1rem;
   } 
 .item label {
-  width: 5rem;
+  width: 7rem;
   text-align: center;
   font-weight: bold;
   display: block;
@@ -53,10 +53,12 @@ input {
     background-color: rgb(147, 226, 43);
     display: block;
     width: 6rem;
+    font-style: bold;
+    font-weight: bolder;
   }
   @media (max-width : 480px) {
     .card {
-      width: 100%;
-      margin-top: 50%;
+      width: 95%;
+      margin-top: 25%;
     }
  }

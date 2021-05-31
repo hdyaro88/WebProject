@@ -3,6 +3,7 @@
     width: auto;
     height: auto;
     max-width: 500px;
+    margin-top: 2vh;
 }
 .flex_container {
     display: flex;
@@ -15,9 +16,8 @@
     text-align: center;
 }
 .flex_container label {
-    
     width: 5rem;
-    font-size: medium;
+    font-size: large;
 }
 .downbar {
     display: flex;

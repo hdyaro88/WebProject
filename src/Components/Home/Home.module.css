@@ -12,6 +12,7 @@ form {
   flex-wrap: nowrap;
 }  
 input {
+  font-size: medium;
     width: 90%;
     max-width: 40rem;
     height: 1.5rem;
@@ -53,6 +54,8 @@ input {
     background-color: rgb(250, 14, 14);
     display: block;
     width: 7rem;
+    font-style: bold;
+    font-weight: bolder;
   }
   @media (max-width : 480px) {
      .card {
