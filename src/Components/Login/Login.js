@@ -14,9 +14,7 @@ const Login = (props) => {
     const enteredEmail = emailRef.current.value;
         const enteredPassword = passwordRef.current.value;
         setShowLoading(true)
-        console.log(process.env.API)
-        const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.API_KEY}`;
-        console.log(url)
+        const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAz3RXmmWWjOWJqInL8kZslzfOhPUUpSBs`;
     fetch(
       url ,
       {
