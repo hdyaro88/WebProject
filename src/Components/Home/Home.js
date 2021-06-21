@@ -1,63 +1,59 @@
 import Card from "../UI/Card";
 import * as classes from "./Home.module.css";
 import Button from "../UI/Button";
-import { useContext, useState } from "react";
-import ListContext from "../Context/List-Context";
+import { useEffect,  useRef } from "react";
+import useHTTP from "../../Hooks/use-http";
+import { fetchItems } from "../../Hooks/api";
+import { useDispatch, useSelector } from "react-redux";
+let initial = true;
 
 const Home = (props) => {
-const listCtx = useContext(ListContext)
-  const [name, setname] = useState('');
-  const [age, setage] = useState('');
-  const [relation, setrelation] = useState('');
+const userId = useSelector(state => state.userId)
+const dispatch = useDispatch()
+const {sendRequest , status , data} = useHTTP(fetchItems);
+  const nameRef = useRef();
+  const ageRef = useRef();
+  const relationRef = useRef();
+
+  useEffect(() => {
+    if(initial) {
+      sendRequest({userId : userId});
+      initial = false;
+    }
+      if(status === "completed") {
+        dispatch({type : "UPDATE" , payload : data});
+      }
+    } , [status , data, sendRequest , userId  , dispatch]);
   const submitHandler = (event) => {
     event.preventDefault();
     const post = {
       id: Math.random(),
-      name: name,
-      age: age,
-      relation: relation,
+      name: nameRef.current.value,
+      age: ageRef.current.value,
+      relation: relationRef.current.value,
     };
-    listCtx.add(post)
-    setname("");
-    setrelation("");
-    setage("");
+  
+    dispatch({type : "ADD" , payload: post});
+    nameRef.current.value = "";
+    ageRef.current.value = "";
+    relationRef.current.value ="";
   };
-  const updatenameHandler = (event) => {
-    const val = event.target.value;
-    if (val.trim().lenth === 0) {
-      return;
-    }
-    setname(val);
-  };
-  const updateageHandler = (event) => {
-    const val = event.target.value;
-    if (val.trim().lenth === 0) {
-      return;
-    }
-    setage(+val);
-  };
-  const updaterelationHandler = (event) => {
-    const val = event.target.value;
-    if (val.trim().lenth === 0) {
-      return;
-    }
-    setrelation(val);
-  };
+
   return (
     <div className={classes.card}>
       <Card>
         <form onSubmit={submitHandler}>
           <div className={classes.item}>
             <label>Name</label>
-            <input value={name} required type="text" onChange={updatenameHandler}></input>
+            <input ref={nameRef}  required type="text" ></input>
           </div>
           <div className={classes.item}>
             <label>Age</label>
-            <input value={age} required type="number" onChange={updateageHandler}></input>
+            <input ref={ageRef}  required type="number" ></input>
           </div>
           <div className={classes.item}>
             <label>Relation</label>
-            <input value={relation} required type="text" onChange={updaterelationHandler}></input>
+            <input ref={relationRef} required type="text" ></input>
           </div>
           <div className={classes.buttonItem}>
             <Button className={classes.Create_button}>Create Post</Button>

@@ -1,18 +1,18 @@
-import React, { useContext, useState } from "react";
-import ListContext from "../../Context/List-Context";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Modal from "../../modal/Modal";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import styles from "./PostItem.module.css";
 const PostItem = (props) => {
-    const listCtx = useContext(ListContext)
+    const dispatch = useDispatch()
    const[isClicked , setisClicked] =  useState(false)
    const[editIsClicked , seteditIsClicked] = useState(false)
    const clickHandler = () => {
         setisClicked(!isClicked)
    }
    const deleteClickHandler = () => {
-       listCtx.delete(props.id)
+       dispatch({type : "DEL" , payload : props.id});
    }
    const hideMoalhandler = () => {
     seteditIsClicked(false);

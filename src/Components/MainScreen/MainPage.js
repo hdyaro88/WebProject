@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Login from "../Login/Login";
 import styles from "./MainPage.module.css"
 import SignUp from "./SignUp";
 const MainPage = (props) => {
+    const history = useHistory()
     const [ShowSignUp , setShowSignUp] = useState(false);
     const [ShowSignIn , setShowSignIn] = useState(true);
     const signUpHandler = () => {
@@ -12,6 +14,7 @@ const MainPage = (props) => {
     const signInHandler = ()=> {
         setShowSignIn(true);
         setShowSignUp(false)
+        history.replace('/')
 
     }
     const submitHandler =() => {

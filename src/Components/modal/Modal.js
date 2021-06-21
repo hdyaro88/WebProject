@@ -1,6 +1,6 @@
-import React, { useContext } from "react"
+import React from "react"
 import {  useState } from "react";
-import ListContext from "../Context/List-Context";
+import { useDispatch} from "react-redux";
 import Button from "../UI/Button"
 import Card from "../UI/Card"
 import classes from "./modal.module.css"
@@ -11,7 +11,7 @@ const Backdrop = (props) => {
     )
 } 
 const ModelView = (props) => {
-  const listCtx = useContext(ListContext)
+  const dispatch = useDispatch()
   const [name, setname] = useState('');
   const [age, setage] = useState('');
   const [relation, setrelation] = useState('');
@@ -23,10 +23,7 @@ const ModelView = (props) => {
       age: age,
       relation: relation,
     };
-     listCtx.add(post);
-    setname("");
-    setrelation("");
-    setage("");
+     dispatch({type : "ADD" , payload: post});
     props.onClick();
   };
   const updatenameHandler = (event) => {

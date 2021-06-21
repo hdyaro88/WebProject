@@ -1,6 +1,7 @@
-import React from "react";
+import React , {Suspense} from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import ContextProvider from "./Components/Context/ContextProvider";
-ReactDOM.render(<ContextProvider><App /></ContextProvider>, document.getElementById("root"));
+import { store } from "./Components/Context/ContextProvider";
+import { Provider } from "react-redux";
+ReactDOM.render(<Provider store={store}> <Suspense fallback={<div>Loading..</div>}><App /></Suspense></Provider>, document.getElementById("root"));

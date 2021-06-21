@@ -13,7 +13,7 @@ const SignUp = (props) => {
         const enteredPassword = passwordRef.current.value;
         event.preventDefault();
         setShowLoading(true);
-        const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAz3RXmmWWjOWJqInL8kZslzfOhPUUpSBs';
+        const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAZjoy8dPiBktGsrJ_4z45RCFrc-TxGnko';
         fetch(url ,
           {
               method : 'POST',
